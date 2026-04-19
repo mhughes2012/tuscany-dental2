@@ -12,8 +12,8 @@ import {
   HeartPulse,
   UserCheck,
   ChevronRight,
-  Menu,
-  X,
+  // Menu,
+  // X,
   Award,
   Smile,
 } from "lucide-react";
@@ -21,6 +21,7 @@ import { reviews, stats, type Review } from "./data/reviews";
 import {useState} from "react";
 
 import TuscanyDentalLogo from "./assets/TuscanyDental.png";
+import * as React from "react";
 
 
 const Navbar = () => (
@@ -120,7 +121,7 @@ const Hero = () => (
                       Over 600+ Happy Patients
                     </p>
                     <div className="flex gap-0.5 sm:gap-1 text-yellow-400">
-                      {[1, 2, 3, 4, 5].map((i) => (
+                      {[1, 2, 3, 4, 5].map(() => (
 
                           <Star size={16} fill="currentColor" />
 
@@ -385,10 +386,10 @@ const Footer = () => {
     service: "",
     message: "",
   });
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setSubmitStatus(null);
@@ -573,7 +574,7 @@ const Footer = () => {
                     onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                     }
-                    rows="3"
+                    rows={3}
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                 ></textarea>
               </div>
